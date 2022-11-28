@@ -44,6 +44,21 @@ char*** mkarr(size_t r, size_t c, size_t h)
   return arr;
 }
 
+void free__(char*** buf,int r,int c)
+{
+    int i, j;
+
+    for(i=0; i<r; i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+                free(buf[i][j]);
+        }
+        free(buf[i]);
+    }
+    free(buf);
+}
+
 void transpose_csv(const char *path, const char *outfile)
 {
     //CSV analysis
@@ -135,6 +150,7 @@ void transpose_csv(const char *path, const char *outfile)
         }
     }
     fclose(fs);
+    free__(buf, row, col);
 }
 
 int main(void)
