@@ -70,8 +70,8 @@ void transpose_csv(const char *path, const char *outfile)
     strcat(del, &delimiter);
 
     //some csv has whitespace or \t after their delimiter, I need to check for that as well
-    int white_sparator = read_char_occurrence(' ', '\n', path) > 0 ? true : false;
-    int tab_sparator = read_char_occurrence('\t', '\n', path) > 0 ? true : false;
+    bool white_sparator = read_char_occurrence(' ', '\n', path) > 0 ? true : false;
+    bool tab_sparator = read_char_occurrence('\t', '\n', path) > 0 ? true : false;
 
     if(white_sparator)
     {
